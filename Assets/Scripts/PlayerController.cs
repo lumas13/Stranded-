@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (collision.gameObject.CompareTag("Key")) //Destroys the key when player collides with it
+        if (collision.gameObject.CompareTag("Key")) //Destroys and collects the key when player collides with it
         {
             Destroy(collision.gameObject);
         }

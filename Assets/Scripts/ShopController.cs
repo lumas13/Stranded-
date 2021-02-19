@@ -20,7 +20,6 @@ public class ShopController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void buyAmmo()
