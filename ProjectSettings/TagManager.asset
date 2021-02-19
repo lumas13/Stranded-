@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Key
+  - HealingPad
+  - Test
+  - Enemy
+  - Bullet
+  - Shop
   layers:
   - Default
   - TransparentFX

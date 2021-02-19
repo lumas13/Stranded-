@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class KeyController : MonoBehaviour
 {
-    public float bulletSpeed;
+    private float spinSpeed = 200f;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
-        Destroy(gameObject, 2);
+        transform.Rotate(new Vector3(0, spinSpeed * Time.deltaTime, 0));
     }
 }
