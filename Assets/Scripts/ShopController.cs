@@ -14,7 +14,8 @@ public class ShopController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ammoText.GetComponent<Text>().text = "Ammo: " + ammo;
+        moneyText.GetComponent<Text>().text = "Money " + money;
     }
 
     // Update is called once per frame

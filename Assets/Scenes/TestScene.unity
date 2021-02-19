@@ -1288,9 +1288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Ammo:
-
-'
+  m_Text: "Ammo: \n"
 --- !u!222 &1248987888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1443,7 +1441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoText: {fileID: 1248987887}
-  moneyText: {fileID: 0}
+  moneyText: {fileID: 1817360804}
 --- !u!1 &1536124343
 GameObject:
   m_ObjectHideFlags: 0
