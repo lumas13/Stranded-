@@ -31,7 +31,6 @@ public class ShopController : MonoBehaviour
             ammoText.GetComponent<Text>().text = "Ammo: " + ammo;
             money -= 1;
             moneyText.GetComponent<Text>().text = "Money " + money;
-
         }
     }
 }

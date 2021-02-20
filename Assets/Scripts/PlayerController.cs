@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController inst;
+    public static PlayerController instance;
 
-    public int ammo;    
+    public int ammo;
+    public int money;
     public int playerHealth;
     public float playerSpeed;
     public float rotateSpeed;
 
+    private bool canShoot = true;
+
     public GameObject bulletPrefab;
     public GameObject bulletSpawn;
+    public GameObject shop;
     public Text healthText;
     public Text ammoText;
+    public Text moneyText;
 
     private Animator animator;
     private Rigidbody rigidBody;
@@ -23,8 +28,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shop.SetActive(false);
+
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
+
+        healthText.GetComponent<Text>().text = "Health: " + playerHealth;
+        moneyText.GetComponent<Text>().text = "Money: " + money;
+        ammoText.GetComponent<Text>().text = "Ammo: " + ammo;
     }
 
     // Update is called once per frame
@@ -67,18 +78,44 @@ public class PlayerController : MonoBehaviour
 
     void Shooting()
     {
-        if (Input.GetMouseButtonDown(0)) //Left click on mouse to shoot
+        if (ammo > 0)
         {
-            Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
+            canShoot = true;
+
+            if (Input.GetMouseButtonDown(0) && canShoot == true) //Left click on mouse to shoot
+            {
+                Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
+                ammo--;
+                ammoText.GetComponent<Text>().text = "Ammo: " + ammo;
+            }
+        }
+
+        if (ammo <= 0)
+        {
+            canShoot = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
-        
+    {    
         if (collision.gameObject.CompareTag("Key")) //Destroys and collects the key when player collides with it
         {
             Destroy(collision.gameObject);
+            money++;
+            moneyText.GetComponent<Text>().text = "Money: " + money;
+        }
+
+        if (collision.gameObject.CompareTag("Shop"))
+        {
+            shop.SetActive(true);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Shop"))
+        {
+            shop.SetActive(false);
         }
     }
 
@@ -99,5 +136,4 @@ public class PlayerController : MonoBehaviour
                 healthText.GetComponent<Text>().text = "Health: " + playerHealth; 
         }
     }
-
 }
