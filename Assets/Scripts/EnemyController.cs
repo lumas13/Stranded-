@@ -12,16 +12,20 @@ public class EnemyController : MonoBehaviour
     public GameObject player;
     public GameObject keyPrefab;
     public GameObject keyDropPos;
+    public AudioClip[] audioClip;
    
     private Animator animator;
     private NavMeshAgent navMesh;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         navMesh = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
         player = GameObject.FindGameObjectWithTag("Player");
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,6 +79,8 @@ public class EnemyController : MonoBehaviour
         {
             enemyHP -= 1;
             print(enemyHP);
+            audioSource.PlayOneShot(audioClip[0]);
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    
+
+    public GameObject instruct;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        instruct.SetActive(false);
     }
 
     // Update is called once per frame
@@ -18,9 +18,8 @@ public class MainMenuController : MonoBehaviour
     {
         
     }
-
-    public void PlayGame()
+    public void Instructions()
     {
-        SceneManager.LoadScene("TestScene");
+        instruct.SetActive(true);
     }
 }
